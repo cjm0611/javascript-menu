@@ -1,5 +1,4 @@
 const { Random } = require('@woowacourse/mission-utils');
-const { check } = require('prettier');
 const { MENUS_FOR_EACH_CATEGORIES } = require('../constant/ServiceSettings');
 const DAY_INDEX = {
   0: 'Mon',
@@ -92,10 +91,10 @@ class RecommendationService {
     return categories[Random.pickNumberInRange(1, 5)];
   }
 
-  choiceMenuForEachCoach(dayIndex) {
-    const category = this.#categoryForEachDay[DAY_INDEX[dayIndex]];
-    const coachLength = this.#coaches.length;
-    for (let coachIndex = 0; coachIndex < coachLength; coachIndex += 1) {
+  choiceMenuForEachCoach(coachIndex) {
+    for (let index = 0; index < 5; index += 1) {
+      const day = DAY_INDEX[index];
+      const category = this.#categoryForEachDay[day];
       const menu = this.choiceMenuCanEatInCategory(coachIndex, category);
       this.#menus[coachIndex].push(menu);
     }

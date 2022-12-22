@@ -39,8 +39,9 @@ class ServiceController {
 
   choiceMenu() {
     this.#service.choiceCategoryForWeek();
-    for (let dayIndex = 0; dayIndex < 5; dayIndex += 1) {
-      this.#service.choiceMenuForEachCoach(dayIndex);
+    const numberOfCoaches = this.#service.getCoaches().length;
+    for (let coachIndex = 0; coachIndex < numberOfCoaches; coachIndex += 1) {
+      this.#service.choiceMenuForEachCoach(coachIndex);
     }
 
     this.recommendationResult();
